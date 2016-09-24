@@ -1,6 +1,6 @@
 ﻿// ///////////////////////////////////
 // File: DialogService.cs
-// Last Change: 14.09.2016  20:06
+// Last Change: 24.09.2016  21:48
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -32,6 +32,7 @@ namespace MP3_Tag.Services
         public async Task<bool> ShowDialogYesNo(string paramTitle, string paramMessage)
         {
             MetroWindow metroWindow = Application.Current.MainWindow as MetroWindow;
+
             MessageDialogResult result = await metroWindow.ShowMessageAsync(paramTitle, paramMessage, MessageDialogStyle.AffirmativeAndNegative);
 
             if (result == MessageDialogResult.Affirmative)

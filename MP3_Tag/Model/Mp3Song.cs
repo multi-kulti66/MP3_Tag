@@ -1,6 +1,6 @@
 ﻿// ///////////////////////////////////
 // File: Mp3Song.cs
-// Last Change: 24.09.2016  15:01
+// Last Change: 24.09.2016  21:28
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -167,7 +167,7 @@ namespace MP3_Tag.Model
         /// <summary>
         ///     Gets the wished folder path for the mp3 file.
         /// </summary>
-        private string WishedFilePath
+        public string WishedFilePath
         {
             get { return this._filePath.Substring(0, this._filePath.LastIndexOf(@"\", StringComparison.Ordinal) + 1) + this.Artist + " - " + this.Title + ".mp3"; }
         }
@@ -304,9 +304,9 @@ namespace MP3_Tag.Model
             return paramValue.All(c => ((c >= '0') && (c <= '9')) || ((c >= 'A') && (c <= 'Z'))
                                        || (c == 'Ä') || (c == 'Ö') || (c == 'Ü')
                                        || (c == 'ä') || (c == 'ö') || (c == 'ü')
-                                       || ((c >= 'a') && (c <= 'z'))
-                                       || (c == '.') || (c == '_') || (c == ' ') || (c == '\'')
-                                       || (c == '(') || (c == ')'));
+                                       || ((c >= 'a') && (c <= 'z')) || (c == ' ')
+                                       || (c == '.') || (c == ',') || (c == '_') || (c == '-')
+                                       || (c == '(') || (c == ')') || (c == '&') || (c == '\''));
         }
 
         private string GetValidationError(string propertyName)

@@ -1,6 +1,6 @@
 ﻿// ///////////////////////////////////
 // File: MediaStrings.cs
-// Last Change: 16.09.2016  18:57
+// Last Change: 24.09.2016  22:06
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -23,9 +23,11 @@ namespace Resources
     {
         #region  Static Fields and Constants
 
+        // ReSharper disable PossibleNullReferenceException
+
         public static readonly string Get_FolderPath_Mp3_Songs = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\Resources\MediaFiles\";
 
-        public static readonly string Get_Changing_File_For_MainViewModel = Get_FolderPath_Mp3_Songs + "MainViewModel_Changing_File.mp3";
+        // ReSharper restore PossibleNullReferenceException
 
         public static readonly string Get_FilePath_Anna_Naklab__Supergirl = Get_FolderPath_Mp3_Songs + "Anna Naklab - Supergirl.mp3";
         public static readonly TagValues Get_Tags_Anna_Naklab__Supergirl = new TagValues { Title = "Supergirl", Artist = "Anna Naklab", Album = string.Empty };

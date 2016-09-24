@@ -199,6 +199,11 @@ namespace MP3_Tag.ViewModel
 
         #region Methods
 
+        private string WishedFilePath
+        {
+            get { return this.mp3Song.WishedFilePath; }
+        }
+
         private bool CanSave()
         {
             if (this.mp3Song.IsValid)
@@ -209,7 +214,7 @@ namespace MP3_Tag.ViewModel
             return false;
         }
 
-        private void Save()
+        private async void Save()
         {
             if (!this.mp3Song.IsValid)
             {
@@ -218,11 +223,17 @@ namespace MP3_Tag.ViewModel
 
             if (this.mp3Song.FileExistsAlready)
             {
-                Task<bool> replaceFile = this.dialogService.ShowDialogYesNo("Achtung!", "Die Datei existiert bereits. Wollen Sie diese ersetzen?");
+                bool replaceFile = await this.dialogService.ShowDialogYesNo("Achtung!", "Die Datei existiert bereits. Wollen Sie diese ersetzen?");
 
-                if (!replaceFile.Result)
+                if (!replaceFile)
                 {
                     return;
+                }
+
+                // Necessary to remove the existing file from the repository (save just deletes the file itself)
+                if (this.mp3SongRepository.Mp3Songs.Any(x => x.FilePath == this.WishedFilePath))
+                {
+                    this.mp3SongRepository.RemoveMp3Song(this.WishedFilePath);
                 }
             }
 
