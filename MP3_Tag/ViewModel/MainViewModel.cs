@@ -1,6 +1,6 @@
 // ///////////////////////////////////
 // File: MainViewModel.cs
-// Last Change: 23.09.2016  22:27
+// Last Change: 24.09.2016  14:53
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -50,8 +50,12 @@ namespace MP3_Tag.ViewModel
         private RelayCommand _deselectAllMp3SongsCommand;
         private RelayCommand _saveAllMp3SongsCommand;
         private RelayCommand _changeSelectedMp3SongsCommand;
+        private RelayCommand _saveSelectedMp3SongsCommand;
+        private RelayCommand _undoSelectedMp3SongsCommand;
+        private RelayCommand _deleteSelectedMp3SongsCommand;
         private RelayCommand _cancelAllMp3SongChangesCommand;
         private RelayCommand _deleteAllMp3SongsCommand;
+        private RelayCommand _clearAlbumBySelectedMp3SongsCommand;
 
         #endregion
 
@@ -222,6 +226,45 @@ namespace MP3_Tag.ViewModel
             }
         }
 
+        public RelayCommand SaveSelectedMp3SongsCommand
+        {
+            get
+            {
+                if (this._saveSelectedMp3SongsCommand == null)
+                {
+                    this._saveSelectedMp3SongsCommand = new RelayCommand(this.SaveSelectedMp3Songs);
+                }
+
+                return this._saveSelectedMp3SongsCommand;
+            }
+        }
+
+        public RelayCommand UndoSelectedMp3SongsCommand
+        {
+            get
+            {
+                if (this._undoSelectedMp3SongsCommand == null)
+                {
+                    this._undoSelectedMp3SongsCommand = new RelayCommand(this.UndoSelectedMp3Songs);
+                }
+
+                return this._undoSelectedMp3SongsCommand;
+            }
+        }
+
+        public RelayCommand DeleteSelectedMp3SongsCommand
+        {
+            get
+            {
+                if (this._deleteSelectedMp3SongsCommand == null)
+                {
+                    this._deleteSelectedMp3SongsCommand = new RelayCommand(this.DeleteSelectedMp3Songs);
+                }
+
+                return this._deleteSelectedMp3SongsCommand;
+            }
+        }
+
         public RelayCommand CancelAllMp3SongChangesCommand
         {
             get
@@ -248,9 +291,22 @@ namespace MP3_Tag.ViewModel
             }
         }
 
+        public RelayCommand ClearAlbumBySelectedMp3SongsCommand
+        {
+            get
+            {
+                if (this._clearAlbumBySelectedMp3SongsCommand == null)
+                {
+                    this._clearAlbumBySelectedMp3SongsCommand = new RelayCommand(this.ClearAlbumBySelectedMp3Songs);
+                }
+
+                return this._clearAlbumBySelectedMp3SongsCommand;
+            }
+        }
+
         private bool IsValid
         {
-            get { return ValidatedProperties.All(property => this.GetValidationError(property) == null); }
+            get { return ValidatedProperties.All(property => this.GetValidationError(property) == null) && (!string.IsNullOrEmpty(this.ChangingTitle) || !string.IsNullOrEmpty(this.ChangingArtist) || !string.IsNullOrEmpty(this.ChangingAlbum)); }
         }
 
         #endregion
@@ -383,6 +439,53 @@ namespace MP3_Tag.ViewModel
             }
         }
 
+        private void SaveSelectedMp3Songs()
+        {
+            foreach (Mp3SongViewModel mp3SongViewModel in this.Mp3SongViewModels)
+            {
+                if (mp3SongViewModel.IsSelected)
+                {
+                    mp3SongViewModel.SaveCommand.Execute(this);
+                }
+            }
+        }
+
+        private void UndoSelectedMp3Songs()
+        {
+            foreach (Mp3SongViewModel mp3SongViewModel in this.Mp3SongViewModels)
+            {
+                if (mp3SongViewModel.IsSelected)
+                {
+                    mp3SongViewModel.UndoChangesCommand.Execute(this);
+                }
+            }
+        }
+
+        private void DeleteSelectedMp3Songs()
+        {
+            for (int i = this.Mp3SongViewModels.Count; i > 0; i--)
+            {
+                if (this.Mp3SongViewModels[i - 1].IsSelected)
+                {
+                    this.Mp3SongViewModels[i - 1].RemoveCommand.Execute(this);
+                }
+            }
+
+            this.RaisePropertyChanged(() => this.Mp3SongViewModels);
+        }
+
+        private void ClearAlbumBySelectedMp3Songs()
+        {
+            foreach (Mp3SongViewModel mp3SongViewModel in this.Mp3SongViewModels)
+            {
+                if (mp3SongViewModel.IsSelected)
+                {
+                    mp3SongViewModel.Album = string.Empty;
+                    mp3SongViewModel.SaveCommand.Execute(this);
+                }
+            }
+        }
+
         private bool CanSaveChangingOfSelectedMp3Songs()
         {
             if (this.IsValid)
@@ -407,6 +510,8 @@ namespace MP3_Tag.ViewModel
             {
                 this.Mp3SongViewModels[i].RemoveCommand.Execute(this);
             }
+
+            this.RaisePropertyChanged(() => this.Mp3SongViewModels);
         }
 
         private string GetValidationError(string propertyName)

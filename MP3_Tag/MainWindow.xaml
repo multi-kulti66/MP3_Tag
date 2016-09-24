@@ -8,7 +8,7 @@
                       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" mc:Ignorable="d"
                       DataContext="{Binding Main, Source={StaticResource Locator}}" BorderThickness="0"
                       GlowBrush="Black" ResizeMode="CanResizeWithGrip" WindowTransitionsEnabled="False"
-                      WindowStartupLocation="CenterScreen" Height="350" Width="750" Title="MP3-Tag" TitleCaps="False">
+                      WindowStartupLocation="CenterScreen" Height="500" Width="750" Title="MP3-Tag" TitleCaps="False">
 
     <controls:MetroWindow.Resources>
         <ResourceDictionary Source="MainWindowResources.xaml" />
@@ -45,7 +45,7 @@
 
             <!-- MP3 details view -->
             <Border Grid.Column="0" Width="Auto" Style="{StaticResource MainBorderStyle}">
-                <HeaderedContentControl Header="Änderungen" Style="{StaticResource MainHeaderStyle}">
+                <HeaderedContentControl Header="Selektierte Elemente" Style="{StaticResource MainHeaderStyle}">
                     <Grid Margin="4">
 
                         <Grid.ColumnDefinitions>
@@ -61,10 +61,19 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="20" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="20" />
+                            <RowDefinition Height="25" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="2" />
+                            <RowDefinition Height="10" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <Label Grid.Row="1" Grid.Column="0" Content="Titel:" />
@@ -81,6 +90,20 @@
 
                         <Button Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Content="Umbenennen"
                                 Command="{Binding Path=ChangeSelectedMp3SongsCommand}" />
+
+                        <Button Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Content="Speichern"
+                                Command="{Binding Path=SaveSelectedMp3SongsCommand}" />
+
+                        <Button Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" Content="Zurücksetzen"
+                                Command="{Binding Path=UndoSelectedMp3SongsCommand}" />
+
+                        <Button Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="3" Content="Löschen"
+                                Command="{Binding Path=DeleteSelectedMp3SongsCommand}" />
+                        
+                        <Separator Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="3" />
+
+                        <Button Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="3" Content="Alben löschen"
+                                Command="{Binding Path=ClearAlbumBySelectedMp3SongsCommand}" />
                     </Grid>
                 </HeaderedContentControl>
             </Border>
@@ -89,7 +112,8 @@
             <Border Grid.Column="2" Style="{StaticResource MainBorderStyle}">
                 <HeaderedContentControl Header="Liste" Style="{StaticResource MainHeaderStyle}">
                     <DataGrid x:Name="Mp3DataGrid" ItemsSource="{Binding Path=Mp3SongViewModels}"
-                              AutoGenerateColumns="False" RowStyle="{StaticResource RowDataGridStyle}">
+                              AutoGenerateColumns="False" RowStyle="{StaticResource RowDataGridStyle}"
+                              SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn CellStyle="{StaticResource NonTabCellDataGridStyle}">
                                 <DataGridTemplateColumn.HeaderTemplate>
