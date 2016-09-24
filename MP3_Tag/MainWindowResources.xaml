@@ -2,7 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:converter="clr-namespace:MP3_Tag.Converter">
 
+    <!-- Converter for the DataGrid selection header-->
     <converter:Mp3CollectionToBooleanConverter x:Key="Mp3CollectionToBooleanConverter" />
+
+    <!-- ContextMenu for DataGrid -->
+    <ContextMenu x:Key="dataGridContextMenu" DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}" >
+        <MenuItem Header="Speichern" Command="{Binding Path=SaveCommand}"/>
+        <MenuItem Header="Zurücksetzen" Command="{Binding Path=UndoChangesCommand}" />
+        <MenuItem Header="Entfernen" Command="{Binding Path=RemoveCommand}" />
+    </ContextMenu>
 
     <!-- Main border style-->
     <Style x:Key="MainBorderStyle" TargetType="{x:Type Border}">
@@ -80,6 +88,7 @@
                 <Setter Property="Background" Value="DarkOrange" />
             </Trigger>
         </Style.Triggers>
+        <Setter Property="ContextMenu" Value="{StaticResource dataGridContextMenu}" />
     </Style>
 
 </ResourceDictionary>

@@ -1,6 +1,6 @@
 ﻿// ///////////////////////////////////
 // File: Mp3Song.cs
-// Last Change: 17.09.2016  13:38
+// Last Change: 24.09.2016  15:01
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -239,14 +239,6 @@ namespace MP3_Tag.Model
         }
 
         /// <summary>
-        ///     Clears all tags from the mp3 file.
-        /// </summary>
-        public void ClearTags()
-        {
-            this._mp3Song.Tag.Clear();
-        }
-
-        /// <summary>
         ///     Saves all changes to the mp3 file.
         /// </summary>
         public void Save()
@@ -256,9 +248,26 @@ namespace MP3_Tag.Model
                 throw new InvalidOperationException("The mp3 file has invalid property values.");
             }
 
+            this.ClearTags();
             this._mp3Song.Save();
             this.Rename();
             this.EndEdit();
+        }
+
+        /// <summary>
+        ///     Clears all tags from the mp3 file.
+        /// </summary>
+        private void ClearTags()
+        {
+            string tempTitle = this.Title;
+            string tempArtist = this.Artist;
+            string tempAlbum = this.Album;
+
+            this._mp3Song.Tag.Clear();
+
+            this.Title = tempTitle;
+            this.Artist = tempArtist;
+            this.Album = tempAlbum;
         }
 
         private void Rename()
