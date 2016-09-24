@@ -92,6 +92,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behavior\DropBehavior.cs" />
+    <Compile Include="Behavior\RowMoveBehavior.cs" />
     <Compile Include="Converter\Mp3CollectionToBooleanConverter.cs" />
     <Compile Include="DataAccess\MP3SongAddedEventArgs.cs" />
     <Compile Include="DataAccess\MP3SongRemovedEventArgs.cs" />

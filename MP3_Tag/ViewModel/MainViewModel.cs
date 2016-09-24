@@ -1,6 +1,6 @@
 // ///////////////////////////////////
 // File: MainViewModel.cs
-// Last Change: 24.09.2016  16:19
+// Last Change: 24.09.2016  21:27
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -13,7 +13,9 @@ namespace MP3_Tag.ViewModel
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.ComponentModel;
+    using System.IO;
     using System.Linq;
+    using System.Windows;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using MP3_Tag.DataAccess;
@@ -57,6 +59,7 @@ namespace MP3_Tag.ViewModel
         private RelayCommand _cancelAllMp3SongChangesCommand;
         private RelayCommand _deleteAllMp3SongsCommand;
         private RelayCommand _clearAlbumBySelectedMp3SongsCommand;
+        private RelayCommand<object> _dropCommand;
 
         #endregion
 
@@ -320,6 +323,19 @@ namespace MP3_Tag.ViewModel
             }
         }
 
+        public RelayCommand<object> DropCommand
+        {
+            get
+            {
+                if (this._dropCommand == null)
+                {
+                    this._dropCommand = new RelayCommand<object>(this.Drop);
+                }
+
+                return this._dropCommand;
+            }
+        }
+
         private bool IsValid
         {
             get { return ValidatedProperties.All(property => this.GetValidationError(property) == null) && (!string.IsNullOrEmpty(this.ChangingTitle) || !string.IsNullOrEmpty(this.ChangingArtist) || !string.IsNullOrEmpty(this.ChangingAlbum)); }
@@ -530,6 +546,31 @@ namespace MP3_Tag.ViewModel
             this.RaisePropertyChanged(() => this.Mp3SongViewModels);
         }
 
+        private void Drop(object obj)
+        {
+            var dataObject = obj as IDataObject;
+
+            if (dataObject == null)
+            {
+                return;
+            }
+
+            string[] formats = (string[])dataObject.GetData(DataFormats.FileDrop);
+
+            if (formats == null)
+            {
+                return;
+            }
+
+            foreach (string fileName in formats)
+            {
+                if (this.Mp3SongViewModels.All(x => x.FilePath != fileName) && (Path.GetExtension(fileName) == ".mp3"))
+                {
+                    this._mp3SongRepository.AddMp3Song(fileName);
+                }
+            }
+        }
+
         private string GetValidationError(string propertyName)
         {
             string error;
@@ -558,9 +599,9 @@ namespace MP3_Tag.ViewModel
             return paramValue.All(c => ((c >= '0') && (c <= '9')) || ((c >= 'A') && (c <= 'Z'))
                                        || (c == 'Ä') || (c == 'Ö') || (c == 'Ü')
                                        || (c == 'ä') || (c == 'ö') || (c == 'ü')
-                                       || ((c >= 'a') && (c <= 'z'))
-                                       || (c == '.') || (c == '_') || (c == ' ') || (c == '\'')
-                                       || (c == '(') || (c == ')'));
+                                       || ((c >= 'a') && (c <= 'z')) || (c == ' ')
+                                       || (c == '.') || (c == ',') || (c == '_') || (c == '-')
+                                       || (c == '(') || (c == ')') || (c == '&') || (c == '\''));
         }
 
         private string ValidateChangingTitle()

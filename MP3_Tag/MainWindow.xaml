@@ -3,7 +3,7 @@
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-                      xmlns:converter="clr-namespace:MP3_Tag.Converter"
+                      xmlns:converter="clr-namespace:MP3_Tag.Converter" xmlns:behavior="clr-namespace:MP3_Tag.Behavior"
                       xmlns:viewModel="clr-namespace:MP3_Tag.ViewModel"
                       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" mc:Ignorable="d"
                       DataContext="{Binding Main, Source={StaticResource Locator}}" BorderThickness="0"
@@ -114,8 +114,10 @@
                 <HeaderedContentControl Header="Liste" Style="{StaticResource MainHeaderStyle}">
                     <DataGrid x:Name="Mp3DataGrid" ItemsSource="{Binding Path=Mp3SongViewModels}"
                               AutoGenerateColumns="False" RowStyle="{StaticResource RowDataGridStyle}"
-                              SelectionMode="Single" CanUserDeleteRows="False"
-                              SelectedItem="{Binding Path=SelectedMp3SongViewModel}">
+                              SelectionMode="Single" CanUserDeleteRows="False" AllowDrop="True"
+                              SelectedItem="{Binding Path=SelectedMp3SongViewModel}"
+                              behavior:DropBehavior.DropCommand="{Binding Path=DropCommand}"
+                              behavior:RowMoveBehavior.EnableRowsMove="True">
                         <DataGrid.InputBindings>
                             <KeyBinding Modifiers="Control" Key="S"
                                         Command="{Binding Path=SelectedMp3SongViewModel.SaveCommand}" />
