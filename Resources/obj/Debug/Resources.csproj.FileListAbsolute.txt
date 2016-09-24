@@ -1,0 +1,10 @@
+F:\MP3_Tag\Resources\bin\Debug\Resources.dll
+F:\MP3_Tag\Resources\bin\Debug\Resources.pdb
+F:\MP3_Tag\Resources\obj\Debug\Resources.csprojResolveAssemblyReference.cache
+F:\MP3_Tag\Resources\obj\Debug\Resources.dll
+F:\MP3_Tag\Resources\obj\Debug\Resources.pdb
+E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\Resources\bin\Debug\Resources.dll
+E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\Resources\bin\Debug\Resources.pdb
+E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\Resources\obj\Debug\Resources.dll
+E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\Resources\obj\Debug\Resources.pdb
+E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\Resources\obj\Debug\Resources.csprojResolveAssemblyReference.cache
