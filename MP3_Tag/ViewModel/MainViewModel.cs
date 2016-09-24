@@ -1,6 +1,6 @@
 // ///////////////////////////////////
 // File: MainViewModel.cs
-// Last Change: 24.09.2016  14:53
+// Last Change: 24.09.2016  16:19
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -44,6 +44,7 @@ namespace MP3_Tag.ViewModel
         private bool? _allMp3SongsSelected;
 
         private ObservableCollection<Mp3SongViewModel> _mp3SongViewModels;
+        private Mp3SongViewModel _selectedMp3SongViewModel;
 
         private RelayCommand _addMp3FilesCommand;
         private RelayCommand _selectAllMp3SongsCommand;
@@ -132,6 +133,35 @@ namespace MP3_Tag.ViewModel
             }
         }
 
+        public ObservableCollection<Mp3SongViewModel> Mp3SongViewModels
+        {
+            get { return this._mp3SongViewModels; }
+            set
+            {
+                if (this._mp3SongViewModels == value)
+                {
+                    return;
+                }
+
+                this._mp3SongViewModels = value;
+            }
+        }
+
+        public Mp3SongViewModel SelectedMp3SongViewModel
+        {
+            get { return this._selectedMp3SongViewModel; }
+            set
+            {
+                if (this._selectedMp3SongViewModel == value)
+                {
+                    return;
+                }
+
+                this._selectedMp3SongViewModel = value;
+                this.RaisePropertyChanged(() => this.SelectedMp3SongViewModel);
+            }
+        }
+
         public bool? AllMp3SongsSelected
         {
             get { return this._allMp3SongsSelected; }
@@ -144,20 +174,6 @@ namespace MP3_Tag.ViewModel
 
                 this._allMp3SongsSelected = value;
                 this.RaisePropertyChanged(() => this.AllMp3SongsSelected);
-            }
-        }
-
-        public ObservableCollection<Mp3SongViewModel> Mp3SongViewModels
-        {
-            get { return this._mp3SongViewModels; }
-            set
-            {
-                if (this._mp3SongViewModels == value)
-                {
-                    return;
-                }
-
-                this._mp3SongViewModels = value;
             }
         }
 

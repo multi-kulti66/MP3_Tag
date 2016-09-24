@@ -8,10 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("anna%20naklab%20-%20supergirl.mp3")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("aronchupa%20-%20i\'m%20an%20albatraoz.mp3")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("avicii%20-%20you%20make%20me.mp3")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bring%20me%20the%20horizon%20-%20avalanche.mp3")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bring%20me%20the%20horizon%20-%20blasphemy.mp3")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mp3_tag_icon.ico")]
 
 

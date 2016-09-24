@@ -1,6 +1,6 @@
 ﻿// ///////////////////////////////////
 // File: Mp3SongViewModel.cs
-// Last Change: 17.09.2016  20:38
+// Last Change: 24.09.2016  19:32
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -45,7 +45,7 @@ namespace MP3_Tag.ViewModel
         {
             this.dialogService = paramDialogService;
             this.mp3SongRepository = paramMp3SongRepository;
-            this.mp3Song = new Mp3Song(paramFilePath);
+            this.mp3Song = this.mp3SongRepository.Mp3Songs.First(x => x.FilePath == paramFilePath);
 
             this._isSelected = false;
         }
@@ -228,6 +228,7 @@ namespace MP3_Tag.ViewModel
 
             this.mp3Song.Save();
             this.RaisePropertyChanged(() => this.IsEdited);
+            this.RaisePropertyChanged(() => this.FilePath);
         }
 
         private bool CanRemove()

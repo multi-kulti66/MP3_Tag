@@ -8,7 +8,8 @@
                       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" mc:Ignorable="d"
                       DataContext="{Binding Main, Source={StaticResource Locator}}" BorderThickness="0"
                       GlowBrush="Black" ResizeMode="CanResizeWithGrip" WindowTransitionsEnabled="False"
-                      WindowStartupLocation="CenterScreen" Height="500" Width="750" Title="MP3-Tag" TitleCaps="False">
+                      WindowStartupLocation="CenterScreen" Height="500" Width="750" Title="MP3-Tag" TitleCaps="False"
+                      Icon="pack://application:,,,/Resources/mp3_tag_icon.ico">
 
     <controls:MetroWindow.Resources>
         <ResourceDictionary Source="MainWindowResources.xaml" />
@@ -99,7 +100,7 @@
 
                         <Button Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="3" Content="Löschen"
                                 Command="{Binding Path=DeleteSelectedMp3SongsCommand}" />
-                        
+
                         <Separator Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="3" />
 
                         <Button Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="3" Content="Alben löschen"
@@ -113,7 +114,15 @@
                 <HeaderedContentControl Header="Liste" Style="{StaticResource MainHeaderStyle}">
                     <DataGrid x:Name="Mp3DataGrid" ItemsSource="{Binding Path=Mp3SongViewModels}"
                               AutoGenerateColumns="False" RowStyle="{StaticResource RowDataGridStyle}"
-                              SelectionMode="Single">
+                              SelectionMode="Single" CanUserDeleteRows="False"
+                              SelectedItem="{Binding Path=SelectedMp3SongViewModel}">
+                        <DataGrid.InputBindings>
+                            <KeyBinding Modifiers="Control" Key="S"
+                                        Command="{Binding Path=SelectedMp3SongViewModel.SaveCommand}" />
+                            <KeyBinding Modifiers="Ctrl" Key="Z"
+                                        Command="{Binding Path=SelectedMp3SongViewModel.UndoChangesCommand}" />
+                            <KeyBinding Key="Delete" Command="{Binding Path=SelectedMp3SongViewModel.RemoveCommand}" />
+                        </DataGrid.InputBindings>
                         <DataGrid.Columns>
                             <DataGridTemplateColumn CellStyle="{StaticResource NonTabCellDataGridStyle}">
                                 <DataGridTemplateColumn.HeaderTemplate>
