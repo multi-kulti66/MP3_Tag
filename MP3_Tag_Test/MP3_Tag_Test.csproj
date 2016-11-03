@@ -3,12 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0D146795-ED37-43BE-95FB-77FF6572A860}</ProjectGuid>
+    <ProjectGuid>{BB22524E-CFFC-44A4-ABC8-9717E1BBD05A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MP3_Tag_Test</RootNamespace>
     <AssemblyName>MP3_Tag_Test</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -51,17 +51,10 @@
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="policy.2.0.taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
-      <HintPath>..\packages\taglib.2.1.0.0\lib\policy.2.0.taglib-sharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="taglib-sharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
-      <HintPath>..\packages\taglib.2.1.0.0\lib\taglib-sharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -73,37 +66,33 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
-          <Private>False</Private>
-        </Reference>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DataAccess\Mp3SongRepository_Test.cs" />
+    <Compile Include="Factory\MockModelFactory_Test.cs" />
+    <Compile Include="Helper\ObjectBase_Test.cs" />
+    <Compile Include="Model\FileModifier_Test.cs" />
     <Compile Include="Model\Mp3Song_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DialogServiceNo.cs" />
-    <Compile Include="Services\DialogServiceYes.cs" />
+    <Compile Include="Validation\BindableValidator_Test.cs" />
+    <Compile Include="ViewModel\CheckedElementsViewModel_Test.cs" />
+    <Compile Include="ViewModel\DataGridViewModel_Test.cs" />
     <Compile Include="ViewModel\MainViewModel_Test.cs" />
+    <Compile Include="ViewModel\MenuViewModel_Test.cs" />
     <Compile Include="ViewModel\Mp3SongViewModel_Test.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\" />
+    <ProjectReference Include="..\MP3_Tag\MP3_Tag.csproj">
+      <Project>{9e9628dc-d6b2-4dff-b105-e0c0a264ed8b}</Project>
+      <Name>MP3_Tag</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MP3_Tag\MP3_Tag.csproj">
-      <Project>{6a51435f-a065-4ac6-a656-0f87dafb9f67}</Project>
-      <Name>MP3_Tag</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Resources\Resources.csproj">
-      <Project>{568341ad-ffc8-4446-a9ce-3d5afeb0cc5c}</Project>
-      <Name>Resources</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

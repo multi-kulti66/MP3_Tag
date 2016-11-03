@@ -1,6 +1,6 @@
 // ///////////////////////////////////
 // File: ViewModelLocator.cs
-// Last Change: 16.09.2016  20:30
+// Last Change: 03.11.2016  20:50
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -10,6 +10,7 @@ namespace MP3_Tag.ViewModel
 {
     using GalaSoft.MvvmLight.Ioc;
     using Microsoft.Practices.ServiceLocation;
+    using MP3_Tag.Factory;
     using MP3_Tag.Services;
 
 
@@ -29,6 +30,7 @@ namespace MP3_Tag.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<IDialogService, DialogService>();
+            SimpleIoc.Default.Register<IModelFactory, TagLibModelFactory>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
 

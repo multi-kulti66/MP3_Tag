@@ -117,23 +117,166 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BindableValidator_IDataErrorInfo_PropertyErrorNotSupported" xml:space="preserve">
+    <value>The property Error from IDataErrorInfo is not supported. Use -this- indexer instead.</value>
+    <comment>Exception message when Error property is used.</comment>
+  </data>
+  <data name="CheckedElementsVM_DisplayName_ClearAlbum" xml:space="preserve">
+    <value>Clear Albums</value>
+    <comment>Display name for the clear albums of checked elements command.</comment>
+  </data>
+  <data name="CheckedElementsVM_DisplayName_Remove" xml:space="preserve">
+    <value>Remove</value>
+    <comment>Display name for the remove checked elements command.</comment>
+  </data>
+  <data name="CheckedElementsVM_DisplayName_Rename" xml:space="preserve">
+    <value>Rename</value>
+    <comment>Display name for the rename checked elements command.</comment>
+  </data>
+  <data name="CheckedElementsVM_DisplayName_Save" xml:space="preserve">
+    <value>Save</value>
+    <comment>Display name for the save checked elements command.</comment>
+  </data>
+  <data name="CheckedElementsVM_DisplayName_Undo" xml:space="preserve">
+    <value>Undo</value>
+    <comment>Display name for the undo checked elements command.</comment>
+  </data>
+  <data name="CommandBroadcast_All" xml:space="preserve">
+    <value>CB_All</value>
+    <comment>Command should be executed for each element.</comment>
+  </data>
+  <data name="CommandBroadcast_Checked" xml:space="preserve">
+    <value>CB_Checked</value>
+    <comment>Command should be executed for checked elements.</comment>
+  </data>
+  <data name="CommandName_Add" xml:space="preserve">
+    <value>C_Add</value>
+    <comment>Command name for adding element.</comment>
+  </data>
+  <data name="CommandName_ClearAlbum" xml:space="preserve">
+    <value>C_ClearAlbum</value>
+    <comment>Command name for clearing the album.</comment>
+  </data>
+  <data name="CommandName_Remove" xml:space="preserve">
+    <value>C_Remove</value>
+    <comment>Command name for removing element.</comment>
+  </data>
+  <data name="CommandName_Rename" xml:space="preserve">
+    <value>C_Rename</value>
+    <comment>Command name for renaming element.</comment>
+  </data>
+  <data name="CommandName_Save" xml:space="preserve">
+    <value>C_Save</value>
+    <comment>Command name for saving element.</comment>
+  </data>
+  <data name="CommandName_Undo" xml:space="preserve">
+    <value>C_Undo</value>
+    <comment>Command name for undo changes to element.</comment>
+  </data>
+  <data name="DataGridVM_Exception_Add" xml:space="preserve">
+    <value>The file could not be added.</value>
+    <comment>Exception message when file could not be added.</comment>
+  </data>
+  <data name="DataGridVM_Exception_Remove" xml:space="preserve">
+    <value>The file could not be removed from the list.</value>
+    <comment>Exception message when file could not be removed from the list.</comment>
+  </data>
+  <data name="DataGridVM_Inner_Exception_Add" xml:space="preserve">
+    <value>Passed path parameter: {0}</value>
+    <comment>Inner exception message when file could not be added.</comment>
+  </data>
+  <data name="DataGridVM_Inner_Exception_Remove" xml:space="preserve">
+    <value>File path of mp3 file: {0}</value>
+    <comment>Inner exception message when file could not be removed.</comment>
+  </data>
+  <data name="Exception_InvalidCommandName" xml:space="preserve">
+    <value>The wished command does not exist.</value>
+    <comment>Exception occurs when the wished command name does not exist.</comment>
+  </data>
+  <data name="FileModifierM_Exception_Delete" xml:space="preserve">
+    <value>The file could not be deleted.</value>
+    <comment>Exception message when file could not be deleted.</comment>
+  </data>
+  <data name="FileModifierM_Exception_Move" xml:space="preserve">
+    <value>The file could not be renamed.</value>
+    <comment>Exception message when file could not be renamed.</comment>
+  </data>
+  <data name="FileModifierM_Inner_Exception_Delete" xml:space="preserve">
+    <value>Passed path parameter: {0}</value>
+    <comment>Inner exception message when file could not be deleted.</comment>
+  </data>
+  <data name="FileModifierM_Inner_Exception_Move" xml:space="preserve">
+    <value>Passed path parameter (old): {0}\n\nPassed path parameter (new): {1}</value>
+    <comment>Inner exception message when file could not be renamed.</comment>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="changed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\changed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_changed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_changed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_clearAlbum" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_clearAlbum.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\undo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mp3_tag_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mp3_tag_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_undo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuVM_DisplayName_Add" xml:space="preserve">
+    <value>Add</value>
+    <comment>Display name for the add command.</comment>
+  </data>
+  <data name="MenuVM_DisplayName_ClearAlbum" xml:space="preserve">
+    <value>Clear all albums</value>
+    <comment>Display name for the clear albums of all elements command.</comment>
+  </data>
+  <data name="MenuVM_DisplayName_Remove" xml:space="preserve">
+    <value>Remove all</value>
+    <comment>Display name for the remove all elements command.</comment>
+  </data>
+  <data name="MenuVM_DisplayName_Save" xml:space="preserve">
+    <value>Save all</value>
+    <comment>Display name for the save all elements command.</comment>
+  </data>
+  <data name="MenuVM_DisplayName_Undo" xml:space="preserve">
+    <value>Undo all</value>
+    <comment>Display name for the undo all elements command.</comment>
+  </data>
+  <data name="Mp3SongVM_DisplayName_ClearAlbum" xml:space="preserve">
+    <value>Clear Album</value>
+    <comment>Display name for the clear albums command.</comment>
+  </data>
+  <data name="Mp3SongVM_DisplayName_Remove" xml:space="preserve">
+    <value>Remove</value>
+    <comment>Display name for the remove command.</comment>
+  </data>
+  <data name="Mp3SongVM_DisplayName_Save" xml:space="preserve">
+    <value>Save</value>
+    <comment>Display name for the save command.</comment>
+  </data>
+  <data name="Mp3SongVM_DisplayName_Undo" xml:space="preserve">
+    <value>Undo</value>
+    <comment>Display name for the undo command.</comment>
+  </data>
+  <data name="TagLibMp3File_Exception_InvalidFilePath" xml:space="preserve">
+    <value>The file could not be loaded.</value>
+    <comment>Exception message when file could not be loaded.</comment>
+  </data>
+  <data name="TagLibMp3File_Inner_Exception_InvalidFilePath" xml:space="preserve">
+    <value>Passed path parameter: {0}</value>
+    <comment>Inner exception message when file could not be loaded.</comment>
+  </data>
+  <data name="Validation_Error_InvalidCharacter" xml:space="preserve">
+    <value>The field \"{0}\" contains an invalid character!</value>
+    <comment>Error message when value of property contains invalid character.</comment>
   </data>
 </root>

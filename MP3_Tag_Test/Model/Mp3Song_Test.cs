@@ -1,6 +1,6 @@
 ﻿// ///////////////////////////////////
 // File: Mp3Song_Test.cs
-// Last Change: 16.09.2016  19:07
+// Last Change: 03.11.2016  20:50
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -8,45 +8,40 @@
 
 namespace MP3_Tag_Test.Model
 {
-    using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using MP3_Tag.Model;
-    using Resources;
-    using TagLib;
 
 
 
     [TestClass]
     public class Mp3Song_Test
     {
+        #region  Static Fields and Constants
+
+        private const string InitTitle = "TestTitle";
+        private const string InitArtist = "TestArtist";
+        private const string InitAlbum = "TestAlbum";
+
+        #endregion
+
+
+
         #region Fields
 
+        private IMp3File mp3File;
+        private IFileModifier fileModifier;
         private Mp3Song mp3Song;
 
         #endregion
 
 
 
-        #region Constructors
+        #region Test Initialize
 
-        public Mp3Song_Test()
+        [TestInitialize]
+        public void TestInit()
         {
-            this.mp3Song = new Mp3Song(MediaStrings.Get_FilePath_Anna_Naklab__Supergirl);
-        }
-
-        #endregion
-
-
-
-        #region Test Cleanup
-
-        [TestCleanup]
-        public void TestCleanup()
-        {
-            this.mp3Song.Title = MediaStrings.Get_Tags_Anna_Naklab__Supergirl.Title;
-            this.mp3Song.Artist = MediaStrings.Get_Tags_Anna_Naklab__Supergirl.Artist;
-            this.mp3Song.Album = MediaStrings.Get_Tags_Anna_Naklab__Supergirl.Album;
-            this.mp3Song.Save();
+            this.CreateMp3Song(false);
         }
 
         #endregion
@@ -56,292 +51,94 @@ namespace MP3_Tag_Test.Model
         #region Test Methods
 
         [TestMethod]
-        public void LoadFileIfPathExists()
-        {
-            // Assert
-            Assert.IsInstanceOfType(this.mp3Song, typeof(Mp3Song));
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(UnsupportedFormatException))]
-        public void ThrowExceptionIfPathNotExists()
+        public void IsWishedFilePathCorrect()
         {
             // Arrange
-            this.mp3Song = new Mp3Song(string.Empty);
-
-            // Assert
-            // --> throw exception
-        }
-
-        [TestMethod]
-        public void NotInEditModeAfterInit()
-        {
-            // Assert
-            Assert.IsFalse(this.mp3Song.IsEdited, "Should detect that file was not changed.");
-        }
-
-        [TestMethod]
-        public void FileInEditModeAfterTitleEdited()
-        {
-            // Act
-            this.mp3Song.Title = "TestTitle";
-
-            // Assert
-            Assert.IsTrue(this.mp3Song.IsEdited, "Changed property should be detected.");
-        }
-
-        [TestMethod]
-        public void FileInEditModeAfterArtistEdited()
-        {
-            // Act
-            this.mp3Song.Artist = "TestArtist";
-
-            // Assert
-            Assert.IsTrue(this.mp3Song.IsEdited, "Changed property should be detected.");
-        }
-
-        [TestMethod]
-        public void FileInEditModeAfterAlbumEdited()
-        {
-            // Act
-            this.mp3Song.Album = "TestAlbum";
-
-            // Assert
-            Assert.IsTrue(this.mp3Song.IsEdited, "Changed property should be detected.");
-        }
-
-        [TestMethod]
-        public void FileInEditModeAfterDoubleEditting()
-        {
-            // Act
-            this.mp3Song.Album = "T";
-            this.mp3Song.Album += "e";
-
-            // Assert
-            Assert.IsTrue(this.mp3Song.IsEdited, "Changed property should be detected.");
-        }
-
-        [TestMethod]
-        public void CancelEdittingShouldSetFileToInitValues()
-        {
-            // Arrange
-            this.mp3Song.Title = "TestTitle";
+            this.mp3Song.Title = "Andre";
+            MockMp3File mockMp3File = (MockMp3File)this.mp3File;
+            string expectedValue = mockMp3File.WishedFilePath;
 
             // Act
-            this.mp3Song.CancelEdit();
+            string actualValue = this.mp3Song.WishedFilePath;
 
             // Assert
-            Assert.AreEqual(MediaStrings.Get_Tags_Anna_Naklab__Supergirl.Title, this.mp3Song.Title);
+            Assert.AreEqual(expectedValue, actualValue);
         }
 
         [TestMethod]
-        public void FileInNotEditedStateWhenPropertyHasInitValue()
-        {
-            // Act
-            this.mp3Song.Title = "TestTitle";
-            this.mp3Song.Title = MediaStrings.Get_Tags_Anna_Naklab__Supergirl.Title;
-
-            // Asssert
-            Assert.IsFalse(this.mp3Song.IsEdited);
-        }
-
-        [TestMethod]
-        public void ValidMp3AfterInit()
-        {
-            // Assert
-            Assert.AreEqual(this.mp3Song.IsValid, true, "Mp3 file should be valid.");
-        }
-
-        [TestMethod]
-        public void CheckIfMp3SongIsInvalidWhenTitleEmpty()
-        {
-            // Act
-            this.mp3Song.Title = string.Empty;
-
-            // Assert
-            Assert.AreEqual(this.mp3Song.IsValid, false, "Mp3 file should be invalid.");
-        }
-
-        [TestMethod]
-        public void CheckIfMp3SongIsInvalidWhenArtistEmpty()
-        {
-            // Act
-            this.mp3Song.Artist = string.Empty;
-
-            // Assert
-            Assert.AreEqual(this.mp3Song.IsValid, false, "Mp3 file should be invalid.");
-        }
-
-        [TestMethod]
-        public void CheckIfMp3SongIsInvalidWhenTitleHasWrongStringFormat()
-        {
-            // Act
-            this.mp3Song.Title = "The Title# ";
-
-            // Assert
-            Assert.AreEqual(this.mp3Song.IsValid, false, "Mp3 file should be invalid.");
-        }
-
-        [TestMethod]
-        public void WishedFileNameEqualsOwnFileNameShouldNotBeSeenAsExisting()
+        public void WishedFilePathEqualsFilePathReturnsFalse()
         {
             // Assert
             Assert.IsFalse(this.mp3Song.FileExistsAlready);
         }
 
         [TestMethod]
-        public void DetectThatWishedFileNameExistsAlready()
-        {
-            // Act
-            this.mp3Song.Title = MediaStrings.Get_Tags_AronChupa__Im_An_Albatraoz.Title;
-            this.mp3Song.Artist = MediaStrings.Get_Tags_AronChupa__Im_An_Albatraoz.Artist;
-
-            // Assert
-            Assert.IsTrue(this.mp3Song.FileExistsAlready, "Should detect that wished file name already exists in folder.");
-        }
-
-        [TestMethod]
-        public void DetectNotExistingFile()
+        public void ReturnFalseWhenWishedFilePathNotFilePathAndFileDoesNotExist()
         {
             // Arrange
-            string ExpectedTitle = MediaStrings.Get_Tags_AronChupa__Im_An_Albatraoz.Title;
-            const string ExpectedArtist = "TestArtist";
-
-            // Act
-            this.mp3Song.Title = ExpectedTitle;
-            this.mp3Song.Artist = ExpectedArtist;
+            this.mp3Song.Title = "Name";
 
             // Assert
-            Assert.IsFalse(this.mp3Song.FileExistsAlready, "Should detect that wished file name not exists in folder.");
+            Assert.IsFalse(this.mp3Song.FileExistsAlready);
         }
 
         [TestMethod]
-        public void GetNoValidationErrorForValidTitle()
-        {
-            // Act
-            this.mp3Song.Title = "Ach ja der Titel";
-
-            // Assert
-            Assert.IsNull(this.mp3Song[nameof(this.mp3Song.Title)]);
-        }
-
-        [TestMethod]
-        public void GetValidationErrorForEmptyTitle()
-        {
-            // Act
-            this.mp3Song.Title = string.Empty;
-
-            // Assert
-            Assert.AreEqual(this.mp3Song[nameof(this.mp3Song.Title)], ErrorStrings.Mp3Song_Error_TitleValueMissing);
-        }
-
-        [TestMethod]
-        public void GetValidationErrorForInvalidTitleValue()
-        {
-            // Act
-            this.mp3Song.Title = "titleWith+#";
-
-            // Assert
-            Assert.AreEqual(this.mp3Song[nameof(this.mp3Song.Title)], ErrorStrings.Mp3Song_Error_TitleValueFaulty);
-        }
-
-        [TestMethod]
-        public void GetNoValidationErrorForValidArtist()
-        {
-            // Act
-            this.mp3Song.Artist = "Interpretenname";
-
-            // Assert
-            Assert.IsNull(this.mp3Song[nameof(this.mp3Song.Artist)]);
-        }
-
-        [TestMethod]
-        public void GetValidationErrorForEmptyArtist()
-        {
-            // Act
-            this.mp3Song.Artist = string.Empty;
-
-            // Assert
-            Assert.AreEqual(this.mp3Song[nameof(this.mp3Song.Artist)], ErrorStrings.Mp3Song_Error_ArtistValueMissing);
-        }
-
-        [TestMethod]
-        public void GetValidationErrorForInvalidArtistValue()
-        {
-            // Act
-            this.mp3Song.Artist = "lalauschi123 ?´";
-
-            // Assert
-            Assert.AreEqual(this.mp3Song[nameof(this.mp3Song.Artist)], ErrorStrings.Mp3Song_Error_ArtistValueFaulty);
-        }
-
-        [TestMethod]
-        public void GetNoValidationErrorForEmptyAlbum()
-        {
-            // Act
-            this.mp3Song.Album = null;
-
-            // Assert
-            Assert.IsNull(this.mp3Song[nameof(this.mp3Song.Album)]);
-        }
-
-        [TestMethod]
-        public void GetValidationErrorForInvalidAlbumValue()
-        {
-            // Act
-            this.mp3Song.Album = "Kein Komma , erlaubt";
-
-            // Assert
-            Assert.AreEqual(this.mp3Song[nameof(this.mp3Song.Album)], ErrorStrings.Mp3Song_Error_AlbumValueFaulty);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException), ErrorStrings.Mp3Song_Exception_PropertyNotExisting)]
-        public void GetExceptionForNotExistingProperty()
-        {
-            // Act
-            string s = this.mp3Song["test"];
-        }
-
-        [TestMethod]
-        public void CheckIfSameFilePathWillBeDeteced()
+        public void ReturnTrueWhenWishedFilePathNotFilePathAndFileDoesExist()
         {
             // Arrange
-            Mp3Song tempMp3Song = new Mp3Song(MediaStrings.Get_FilePath_Anna_Naklab__Supergirl);
-
-            // Act
-            tempMp3Song.Title = "TestTitle";
-            tempMp3Song.Artist = "TestArtist";
+            this.CreateMp3Song(true);
+            this.mp3Song.Title = "Name";
 
             // Assert
-            Assert.IsTrue(this.mp3Song.HasSameFilePath(tempMp3Song));
+            Assert.IsTrue(this.mp3Song.FileExistsAlready);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void ThrowExceptionIfFileShouldBeSavedWhenFileHasInvalidProperties()
-        {
-            // Act
-            this.mp3Song.Title = "+The title";
-            this.mp3Song.Save();
-
-            // Assert
-            // Throw exception
-        }
-
-        [TestMethod]
-        public void ChangeFilePathIfValid()
+        public void ChangeFilePathWhenSaved()
         {
             // Arrange
             const string ExpectedTitle = "Test Titleäü";
-            string ExpectedFilePath = MediaStrings.Get_FolderPath_Mp3_Songs + MediaStrings.Get_Tags_Anna_Naklab__Supergirl.Artist + " - " + ExpectedTitle + ".mp3";
+            this.mp3Song.Title = ExpectedTitle;
+
+            MockMp3File mockMp3File = (MockMp3File)this.mp3File;
+            string expectedValue = mockMp3File.WishedFilePath;
 
             // Act
-            this.mp3Song.Title = ExpectedTitle;
-            this.mp3Song.Save();
+            this.mp3Song.SaveAndRename();
 
             // Assert
-            Assert.AreEqual(this.mp3Song.FilePath, ExpectedFilePath, "The mp3 file should have been renamed.");
+            Assert.AreEqual(expectedValue, this.mp3Song.FilePath);
+        }
+
+        [TestMethod]
+        public void ResetToInitValues()
+        {
+            // Arrange
+            this.mp3Song.Title = "Awwer";
+            this.mp3Song.Artist = "asdf";
+            this.mp3Song.Album = "moanser";
+
+            // Act
+            this.mp3Song.Undo();
+
+            // Assert
+            Assert.AreEqual(InitTitle, this.mp3Song.Title);
+            Assert.AreEqual(InitArtist, this.mp3Song.Artist);
+            Assert.AreEqual(InitAlbum, this.mp3Song.Album);
+        }
+
+        #endregion
+
+
+
+        #region Methods
+
+        private void CreateMp3Song(bool paramFileExists)
+        {
+            this.mp3File = new MockMp3File(InitTitle, InitArtist, InitAlbum);
+            this.fileModifier = new MockFileModifier(paramFileExists);
+
+            this.mp3Song = new Mp3Song(this.mp3File, this.fileModifier);
         }
 
         #endregion

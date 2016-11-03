@@ -1,6 +1,6 @@
 ﻿// ///////////////////////////////////
 // File: Mp3SongViewModel_Test.cs
-// Last Change: 17.09.2016  20:42
+// Last Change: 03.11.2016  20:50
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -8,27 +8,35 @@
 
 namespace MP3_Tag_Test.ViewModel
 {
+    using System;
+    using GalaSoft.MvvmLight.Messaging;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using MP3_Tag.DataAccess;
+    using MP3_Tag.Model;
+    using MP3_Tag.Properties;
     using MP3_Tag.Services;
     using MP3_Tag.ViewModel;
-    using MP3_Tag_Test.Services;
-    using Resources;
-    using TagLib;
-    using File = System.IO.File;
 
 
 
     [TestClass]
     public class Mp3SongViewModel_Test
     {
+        #region  Static Fields and Constants
+
+        private const string InitTitle = "test Title";
+        private const string InitArtist = "test Artist";
+        private const string InitAlbum = "test Album";
+
+        #endregion
+
+
+
         #region Fields
 
         private IDialogService dialogServiceYes;
         private IDialogService dialogServiceNo;
 
         private Mp3SongViewModel mp3SongViewModel;
-        private Mp3SongRepository mp3SongRepository;
 
         #endregion
 
@@ -42,23 +50,7 @@ namespace MP3_Tag_Test.ViewModel
             this.dialogServiceYes = new DialogServiceYes();
             this.dialogServiceNo = new DialogServiceNo();
 
-            this.mp3SongRepository = new Mp3SongRepository();
-            this.mp3SongViewModel = new Mp3SongViewModel(MediaStrings.Get_FilePath_Anna_Naklab__Supergirl, this.mp3SongRepository, this.dialogServiceYes);
-        }
-
-        #endregion
-
-
-
-        #region Test Cleanup
-
-        [TestCleanup]
-        public void TestCleanup()
-        {
-            this.mp3SongViewModel.Title = MediaStrings.Get_Tags_Anna_Naklab__Supergirl.Title;
-            this.mp3SongViewModel.Artist = MediaStrings.Get_Tags_Anna_Naklab__Supergirl.Artist;
-            this.mp3SongViewModel.Album = MediaStrings.Get_Tags_Anna_Naklab__Supergirl.Album;
-            this.mp3SongViewModel.SaveCommand.Execute(this);
+            this.InitMp3SongViewModel(false, this.dialogServiceYes);
         }
 
         #endregion
@@ -68,125 +60,203 @@ namespace MP3_Tag_Test.ViewModel
         #region Test Methods
 
         [TestMethod]
-        public void CheckIfInstanceWasCreated()
+        public void CheckIfInstanceWillBeCreated()
         {
             // Assert
             Assert.IsNotNull(this.mp3SongViewModel);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UnsupportedFormatException))]
-        public void ThrowExceptionIfFilePathDoesNotExist()
+        public void NotInEditModeAfterInitialization()
         {
-            // Act
-            this.mp3SongViewModel = new Mp3SongViewModel(string.Empty, this.mp3SongRepository, this.dialogServiceYes);
-
-            // Arrange
-            // Throw exception
+            // Assert
+            Assert.IsFalse(this.mp3SongViewModel.InEditMode);
         }
 
         [TestMethod]
-        public void Mp3SongNotIndicatedAsEditedAtInit()
+        public void InEditModeAfterModifying()
         {
+            // Act
+            this.mp3SongViewModel.Title = "new value";
+
             // Assert
-            Assert.IsFalse(this.mp3SongViewModel.IsEdited);
+            Assert.IsTrue(this.mp3SongViewModel.InEditMode);
         }
 
         [TestMethod]
-        public void CheckIfEditStateChangesToTrueAfterChangingProperty()
+        public void GetRenamedValue()
         {
+            // Assert
+            const string ExpectedValue = "new name";
+
             // Act
-            this.mp3SongViewModel.Album = "TestName for Album";
+            this.mp3SongViewModel.Title = ExpectedValue;
 
             // Assert
-            Assert.IsTrue(this.mp3SongViewModel.IsEdited);
+            Assert.AreEqual(ExpectedValue, this.mp3SongViewModel.Title);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ThrowExceptionWhenCommandNameDoesNotExist()
+        {
+            // Act
+            this.mp3SongViewModel.GetCommand("invalid name").Execute(this);
+
+            // throw exception
         }
 
         [TestMethod]
         public void CancelSaveCommandWhenInvalidProperties()
         {
             // Arrange
+            string ExpectedValue = this.mp3SongViewModel.FilePath;
             this.mp3SongViewModel.Title = "#23asdfads";
 
             // Act
-            this.mp3SongViewModel.SaveCommand.Execute(this);
+            this.mp3SongViewModel.Commands
+                 .Find(x => x.CommandName == Resources.CommandName_Save)
+                 .RelayCommand.Execute(this);
 
             // Assert
-            Assert.AreEqual(MediaStrings.Get_FilePath_Anna_Naklab__Supergirl, this.mp3SongViewModel.FilePath);
+            Assert.AreEqual(ExpectedValue, this.mp3SongViewModel.FilePath);
         }
 
         [TestMethod]
         public void CancelSaveWhenFileExistsAndDialogAnswerIsNo()
         {
             // Arrange
-            this.mp3SongViewModel = new Mp3SongViewModel(MediaStrings.Get_FilePath_Anna_Naklab__Supergirl, this.mp3SongRepository, this.dialogServiceNo);
-            this.mp3SongViewModel.Title = MediaStrings.Get_Tags_AronChupa__Im_An_Albatraoz.Title;
-            this.mp3SongViewModel.Artist = MediaStrings.Get_Tags_AronChupa__Im_An_Albatraoz.Artist;
+            string ExpectedValue = this.mp3SongViewModel.FilePath;
+            this.InitMp3SongViewModel(true, this.dialogServiceNo);
+            this.mp3SongViewModel.Title = "new title";
 
             // Act
-            this.mp3SongViewModel.SaveCommand.Execute(this);
+            this.mp3SongViewModel.Commands
+                 .Find(x => x.CommandName == Resources.CommandName_Save)
+                 .RelayCommand.Execute(this);
 
             // Assert
-            Assert.AreEqual(MediaStrings.Get_FilePath_Anna_Naklab__Supergirl, this.mp3SongViewModel.FilePath);
+            Assert.AreEqual(ExpectedValue, this.mp3SongViewModel.FilePath);
         }
 
         [TestMethod]
         public void OverwriteFileWhenFileExistsAndDialogAnswerIsYes()
         {
             // Arrange
-            string ExpectedFilePath = MediaStrings.Get_FolderPath_Mp3_Songs + MediaStrings.Get_Tags_Avicii__You_Make_Me.Artist + " - " + MediaStrings.Get_Tags_Avicii__You_Make_Me.Title + "_copy.mp3";
-            File.Copy(MediaStrings.Get_FilePath_Avicii__You_Make_Me, ExpectedFilePath);
+            const string NewValue = "new title string";
+            string ExpectedValue = MockMp3File.FolderPath + InitArtist + " - " + NewValue + MockMp3File.Extension;
+            this.InitMp3SongViewModel(true, this.dialogServiceYes);
+            this.mp3SongViewModel.Title = NewValue;
 
             // Act
-            this.mp3SongViewModel.Artist = MediaStrings.Get_Tags_Avicii__You_Make_Me.Artist;
-            this.mp3SongViewModel.Title = MediaStrings.Get_Tags_Avicii__You_Make_Me.Title + "_copy";
-            this.mp3SongViewModel.SaveCommand.Execute(this);
+            this.mp3SongViewModel.Commands
+                 .Find(x => x.CommandName == Resources.CommandName_Save)
+                 .RelayCommand.Execute(this);
 
             // Assert
-            Assert.AreEqual(ExpectedFilePath, this.mp3SongViewModel.FilePath);
-        }
-
-        [TestMethod]
-        public void RemoveMp3FileWhenRemoveCommandWillBeExecuted()
-        {
-            // Arrange
-            this.mp3SongRepository.AddMp3Song(MediaStrings.Get_FilePath_Anna_Naklab__Supergirl);
-
-            // Act
-            this.mp3SongViewModel.RemoveCommand.Execute(this);
-
-            // Assert
-            Assert.AreEqual(0, this.mp3SongRepository.Mp3Songs.Count);
-        }
-
-        [TestMethod]
-        public void DoNotExecuteRemoveCommandWhenFileNotInRepository()
-        {
-            // Arrange
-            this.mp3SongRepository.AddMp3Song(MediaStrings.Get_FilePath_AronChupa__Im_An_Albatraoz);
-
-            // Act
-            this.mp3SongViewModel.RemoveCommand.Execute(this);
-
-            // Assert
-            Assert.AreEqual(1, this.mp3SongRepository.Mp3Songs.Count);
+            Assert.AreEqual(ExpectedValue, this.mp3SongViewModel.FilePath);
         }
 
         [TestMethod]
         public void UndoChangesShouldRestoreInitState()
         {
             // Arrange
-            this.mp3SongViewModel.Title = "TestTitle";
-            this.mp3SongViewModel.Artist = "TestArtist";
-            this.mp3SongViewModel.Album = "TestAlbum";
+            this.mp3SongViewModel.Title = "new title";
+            this.mp3SongViewModel.Artist = "new artist";
+            this.mp3SongViewModel.Album = "new album";
 
             // Act
-            this.mp3SongViewModel.UndoChangesCommand.Execute(this);
+            this.mp3SongViewModel.Commands
+                 .Find(x => x.CommandName == Resources.CommandName_Undo)
+                 .RelayCommand.Execute(this);
 
             // Assert
-            Assert.AreEqual(MediaStrings.Get_Tags_Anna_Naklab__Supergirl.Title, this.mp3SongViewModel.Title);
-            Assert.AreEqual(MediaStrings.Get_Tags_Anna_Naklab__Supergirl.Artist, this.mp3SongViewModel.Artist);
-            Assert.IsTrue(string.IsNullOrEmpty(this.mp3SongViewModel.Album));
+            Assert.AreEqual(InitTitle, this.mp3SongViewModel.Title);
+            Assert.AreEqual(InitArtist, this.mp3SongViewModel.Artist);
+            Assert.AreEqual(InitAlbum, this.mp3SongViewModel.Album);
+        }
+
+        [TestMethod]
+        public void ReceiveRemoveMessage()
+        {
+            // Assert
+            string notificationMessage = null;
+            Messenger.Default.Register<NotificationMessage<Mp3SongViewModel>>(this, x => notificationMessage = x.Notification);
+
+            // Act
+            this.mp3SongViewModel.Commands
+                 .Find(x => x.CommandName == Resources.CommandName_Remove)
+                 .RelayCommand.Execute(this);
+
+            // Assert
+            Assert.AreEqual(Resources.CommandName_Remove, notificationMessage);
+        }
+
+        [TestMethod]
+        public void GetRemovedMp3SongFromMessage()
+        {
+            // Assert
+            Mp3SongViewModel notificationValue = null;
+            Messenger.Default.Register<NotificationMessage<Mp3SongViewModel>>(this, x => notificationValue = x.Content);
+
+            // Act
+            this.mp3SongViewModel.Commands
+                 .Find(x => x.CommandName == Resources.CommandName_Remove)
+                 .RelayCommand.Execute(this);
+
+            // Assert
+            Assert.AreEqual(this.mp3SongViewModel, notificationValue);
+        }
+
+        [TestMethod]
+        public void GetNotSavedMp3SongFromMessageWhenDialogResultIsNo()
+        {
+            this.InitMp3SongViewModel(true, this.dialogServiceNo);
+            Mp3SongViewModel notificationValue = null;
+            Messenger.Default.Register<NotificationMessage<Mp3SongViewModel>>(this, x => notificationValue = x.Content);
+
+            // Act
+            this.mp3SongViewModel.Title = "newValue";
+
+            this.mp3SongViewModel.Commands
+                 .Find(x => x.CommandName == Resources.CommandName_Remove)
+                 .RelayCommand.Execute(this);
+
+            // Assert
+            Assert.IsTrue(notificationValue.InEditMode);
+        }
+
+        [TestMethod]
+        public void GetSavedMp3SongFromMessageWhenDialogResultIsYes()
+        {
+            this.InitMp3SongViewModel(true, this.dialogServiceYes);
+            Mp3SongViewModel notificationValue = null;
+            Messenger.Default.Register<NotificationMessage<Mp3SongViewModel>>(this, x => notificationValue = x.Content);
+
+            // Act
+            this.mp3SongViewModel.Title = "newValue";
+
+            this.mp3SongViewModel.Commands
+                 .Find(x => x.CommandName == Resources.CommandName_Remove)
+                 .RelayCommand.Execute(this);
+
+            // Assert
+            Assert.IsFalse(notificationValue.InEditMode);
+        }
+
+        #endregion
+
+
+
+        #region Methods
+
+        private void InitMp3SongViewModel(bool paramFileExists, IDialogService paramDialogService)
+        {
+            MockMp3File mp3File = new MockMp3File(InitTitle, InitArtist, InitAlbum);
+            MockFileModifier fileModifier = new MockFileModifier(paramFileExists);
+
+            Mp3Song tempMp3Song = new Mp3Song(mp3File, fileModifier);
+            this.mp3SongViewModel = new Mp3SongViewModel(tempMp3Song, paramDialogService);
         }
 
         #endregion

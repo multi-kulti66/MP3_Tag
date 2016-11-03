@@ -22,7 +22,7 @@ namespace MP3_Tag.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MP3_Tag.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MP3_Tag.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace MP3_Tag.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,11 +61,218 @@ namespace MP3_Tag.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The property Error from IDataErrorInfo is not supported. Use -this- indexer instead..
+        /// </summary>
+        public static string BindableValidator_IDataErrorInfo_PropertyErrorNotSupported {
+            get {
+                return ResourceManager.GetString("BindableValidator_IDataErrorInfo_PropertyErrorNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear Albums.
+        /// </summary>
+        public static string CheckedElementsVM_DisplayName_ClearAlbum {
+            get {
+                return ResourceManager.GetString("CheckedElementsVM_DisplayName_ClearAlbum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        public static string CheckedElementsVM_DisplayName_Remove {
+            get {
+                return ResourceManager.GetString("CheckedElementsVM_DisplayName_Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename.
+        /// </summary>
+        public static string CheckedElementsVM_DisplayName_Rename {
+            get {
+                return ResourceManager.GetString("CheckedElementsVM_DisplayName_Rename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string CheckedElementsVM_DisplayName_Save {
+            get {
+                return ResourceManager.GetString("CheckedElementsVM_DisplayName_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Undo.
+        /// </summary>
+        public static string CheckedElementsVM_DisplayName_Undo {
+            get {
+                return ResourceManager.GetString("CheckedElementsVM_DisplayName_Undo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CB_All.
+        /// </summary>
+        public static string CommandBroadcast_All {
+            get {
+                return ResourceManager.GetString("CommandBroadcast_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CB_Checked.
+        /// </summary>
+        public static string CommandBroadcast_Checked {
+            get {
+                return ResourceManager.GetString("CommandBroadcast_Checked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C_Add.
+        /// </summary>
+        public static string CommandName_Add {
+            get {
+                return ResourceManager.GetString("CommandName_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C_ClearAlbum.
+        /// </summary>
+        public static string CommandName_ClearAlbum {
+            get {
+                return ResourceManager.GetString("CommandName_ClearAlbum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C_Remove.
+        /// </summary>
+        public static string CommandName_Remove {
+            get {
+                return ResourceManager.GetString("CommandName_Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C_Rename.
+        /// </summary>
+        public static string CommandName_Rename {
+            get {
+                return ResourceManager.GetString("CommandName_Rename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C_Save.
+        /// </summary>
+        public static string CommandName_Save {
+            get {
+                return ResourceManager.GetString("CommandName_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C_Undo.
+        /// </summary>
+        public static string CommandName_Undo {
+            get {
+                return ResourceManager.GetString("CommandName_Undo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file could not be added..
+        /// </summary>
+        public static string DataGridVM_Exception_Add {
+            get {
+                return ResourceManager.GetString("DataGridVM_Exception_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file could not be removed from the list..
+        /// </summary>
+        public static string DataGridVM_Exception_Remove {
+            get {
+                return ResourceManager.GetString("DataGridVM_Exception_Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passed path parameter: {0}.
+        /// </summary>
+        public static string DataGridVM_Inner_Exception_Add {
+            get {
+                return ResourceManager.GetString("DataGridVM_Inner_Exception_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File path of mp3 file: {0}.
+        /// </summary>
+        public static string DataGridVM_Inner_Exception_Remove {
+            get {
+                return ResourceManager.GetString("DataGridVM_Inner_Exception_Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The wished command does not exist..
+        /// </summary>
+        public static string Exception_InvalidCommandName {
+            get {
+                return ResourceManager.GetString("Exception_InvalidCommandName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file could not be deleted..
+        /// </summary>
+        public static string FileModifierM_Exception_Delete {
+            get {
+                return ResourceManager.GetString("FileModifierM_Exception_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file could not be renamed..
+        /// </summary>
+        public static string FileModifierM_Exception_Move {
+            get {
+                return ResourceManager.GetString("FileModifierM_Exception_Move", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passed path parameter: {0}.
+        /// </summary>
+        public static string FileModifierM_Inner_Exception_Delete {
+            get {
+                return ResourceManager.GetString("FileModifierM_Inner_Exception_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passed path parameter (old): {0}\n\nPassed path parameter (new): {1}.
+        /// </summary>
+        public static string FileModifierM_Inner_Exception_Move {
+            get {
+                return ResourceManager.GetString("FileModifierM_Inner_Exception_Move", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap changed {
+        public static System.Drawing.Bitmap img_add {
             get {
-                object obj = ResourceManager.GetObject("changed", resourceCulture);
+                object obj = ResourceManager.GetObject("img_add", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,29 +280,9 @@ namespace MP3_Tag.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap delete {
+        public static System.Drawing.Bitmap img_changed {
             get {
-                object obj = ResourceManager.GetObject("delete", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon mp3_tag_icon {
-            get {
-                object obj = ResourceManager.GetObject("mp3_tag_icon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ok {
-            get {
-                object obj = ResourceManager.GetObject("ok", resourceCulture);
+                object obj = ResourceManager.GetObject("img_changed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +290,9 @@ namespace MP3_Tag.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap save {
+        public static System.Drawing.Bitmap img_clearAlbum {
             get {
-                object obj = ResourceManager.GetObject("save", resourceCulture);
+                object obj = ResourceManager.GetObject("img_clearAlbum", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,10 +300,148 @@ namespace MP3_Tag.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap undo {
+        public static System.Drawing.Bitmap img_delete {
             get {
-                object obj = ResourceManager.GetObject("undo", resourceCulture);
+                object obj = ResourceManager.GetObject("img_delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_ok {
+            get {
+                object obj = ResourceManager.GetObject("img_ok", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_save {
+            get {
+                object obj = ResourceManager.GetObject("img_save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_undo {
+            get {
+                object obj = ResourceManager.GetObject("img_undo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string MenuVM_DisplayName_Add {
+            get {
+                return ResourceManager.GetString("MenuVM_DisplayName_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear all albums.
+        /// </summary>
+        public static string MenuVM_DisplayName_ClearAlbum {
+            get {
+                return ResourceManager.GetString("MenuVM_DisplayName_ClearAlbum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove all.
+        /// </summary>
+        public static string MenuVM_DisplayName_Remove {
+            get {
+                return ResourceManager.GetString("MenuVM_DisplayName_Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save all.
+        /// </summary>
+        public static string MenuVM_DisplayName_Save {
+            get {
+                return ResourceManager.GetString("MenuVM_DisplayName_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Undo all.
+        /// </summary>
+        public static string MenuVM_DisplayName_Undo {
+            get {
+                return ResourceManager.GetString("MenuVM_DisplayName_Undo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear Album.
+        /// </summary>
+        public static string Mp3SongVM_DisplayName_ClearAlbum {
+            get {
+                return ResourceManager.GetString("Mp3SongVM_DisplayName_ClearAlbum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        public static string Mp3SongVM_DisplayName_Remove {
+            get {
+                return ResourceManager.GetString("Mp3SongVM_DisplayName_Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Mp3SongVM_DisplayName_Save {
+            get {
+                return ResourceManager.GetString("Mp3SongVM_DisplayName_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Undo.
+        /// </summary>
+        public static string Mp3SongVM_DisplayName_Undo {
+            get {
+                return ResourceManager.GetString("Mp3SongVM_DisplayName_Undo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file could not be loaded..
+        /// </summary>
+        public static string TagLibMp3File_Exception_InvalidFilePath {
+            get {
+                return ResourceManager.GetString("TagLibMp3File_Exception_InvalidFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passed path parameter: {0}.
+        /// </summary>
+        public static string TagLibMp3File_Inner_Exception_InvalidFilePath {
+            get {
+                return ResourceManager.GetString("TagLibMp3File_Inner_Exception_InvalidFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The field \&quot;{0}\&quot; contains an invalid character!.
+        /// </summary>
+        public static string Validation_Error_InvalidCharacter {
+            get {
+                return ResourceManager.GetString("Validation_Error_InvalidCharacter", resourceCulture);
             }
         }
     }
