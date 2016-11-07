@@ -1,45 +1,92 @@
-F:\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.csprojResolveAssemblyReference.cache
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag_Test.dll
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag_Test.pdb
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.dll
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.dll
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.dll
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.dll
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag.exe
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\policy.2.0.taglib-sharp.dll
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\Resources.dll
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\System.Windows.Interactivity.dll
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\taglib-sharp.dll
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.dll
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag.pdb
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\Resources.pdb
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.pdb
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.xml
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.xml
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.xml
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.xml
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.pdb
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.xml
-F:\MP3_Tag\MP3_Tag_Test\bin\Debug\policy.2.0.taglib-sharp.config
-F:\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.dll
-F:\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.pdb
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag_Test.dll
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag_Test.pdb
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.dll
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag.exe
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.dll
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\taglib-sharp.dll
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag.pdb
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.pdb
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.xml
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.pdb
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.xml
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.csprojResolveAssemblyReference.cache
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.dll
+C:\Users\viranm\Desktop\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.pdb
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag_Test.dll
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag_Test.pdb
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.dll
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag.exe
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.dll
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\taglib-sharp.dll
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag.pdb
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.pdb
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.xml
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.pdb
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.xml
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\de\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.csprojResolveAssemblyReference.cache
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.dll
+C:\Users\andre\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.pdb
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag_Test.dll
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag_Test.pdb
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.dll
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag.exe
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\System.Windows.Interactivity.dll
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.dll
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\taglib-sharp.dll
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag.pdb
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.pdb
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.xml
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.pdb
+E:\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.xml
+E:\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.csprojResolveAssemblyReference.cache
+E:\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.dll
+E:\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.pdb
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag_Test.dll
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag_Test.pdb
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.dll
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.dll
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.dll
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag.exe
-E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\policy.2.0.taglib-sharp.dll
-E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\Resources.dll
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\System.Windows.Interactivity.dll
-E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\taglib-sharp.dll
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.dll
+E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\taglib-sharp.dll
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MP3_Tag.pdb
-E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\Resources.pdb
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.pdb
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.xml
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
@@ -48,9 +95,10 @@ E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\GalaSoft.MvvmLight.Platform.xml
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.pdb
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\MahApps.Metro.xml
-E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\policy.2.0.taglib-sharp.config
+E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\bin\Debug\de\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.csprojResolveAssemblyReference.cache
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.dll
 E:\OneDrive\Programmierung\Visual Studio 2015\Freizeit\MP3_Tag\MP3_Tag_Test\obj\Debug\MP3_Tag_Test.pdb

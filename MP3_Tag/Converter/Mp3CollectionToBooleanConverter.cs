@@ -1,6 +1,6 @@
 ﻿// ///////////////////////////////////
 // File: Mp3CollectionToBooleanConverter.cs
-// Last Change: 23.09.2016  21:45
+// Last Change: 03.11.2016  20:49
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -27,7 +27,7 @@ namespace MP3_Tag.Converter
 
             if ((mp3SongViewModels != null) && (mp3SongViewModels.Count > 0))
             {
-                int selectedMp3Songs = mp3SongViewModels.Count(x => x.IsSelected);
+                int selectedMp3Songs = mp3SongViewModels.Count(x => x.IsChecked);
 
                 if (selectedMp3Songs.Equals(mp3SongViewModels.Count))
                 {

@@ -1,6 +1,6 @@
 ﻿// ///////////////////////////////////
 // File: AssemblyInfo.cs
-// Last Change: 14.09.2016  20:06
+// Last Change: 03.11.2016  20:50
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -18,9 +18,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("MP3_Tag_Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Vector Informatik GmbH")]
 [assembly: AssemblyProduct("MP3_Tag_Test")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright © Vector Informatik GmbH 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,13 +32,15 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 
-[assembly: Guid("0d146795-ed37-43be-95fb-77ff6572a860")]
+[assembly: Guid("bb22524e-cffc-44a4-abc8-9717e1bbd05a")]
 
 // Version information for an assembly consists of the following four values:
+//
 //      Major Version
 //      Minor Version 
 //      Build Number
 //      Revision
+//
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
