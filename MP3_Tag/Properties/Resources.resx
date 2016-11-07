@@ -276,7 +276,27 @@
     <comment>Inner exception message when file could not be loaded.</comment>
   </data>
   <data name="Validation_Error_InvalidCharacter" xml:space="preserve">
-    <value>The field \"{0}\" contains an invalid character!</value>
+    <value>The field "{0}" contains an invalid character!</value>
     <comment>Error message when value of property contains invalid character.</comment>
+  </data>
+  <data name="img_pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_pause.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CommandName_Load" xml:space="preserve">
+    <value>C_Load</value>
+    <comment>Command name for loading element.</comment>
+  </data>
+  <data name="Mp3SongVM_DisplayName_Load" xml:space="preserve">
+    <value>Load</value>
+    <comment>Display name for the load command.</comment>
+  </data>
+  <data name="img_eject" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_eject.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

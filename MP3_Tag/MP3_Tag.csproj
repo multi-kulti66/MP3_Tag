@@ -95,7 +95,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behavior\DropBehavior.cs" />
-    <Compile Include="Behavior\RowMoveBehavior.cs" />
+    <Compile Include="Behavior\SelectedItemsBehavior.cs" />
     <Compile Include="Converter\Mp3CollectionToBooleanConverter.cs" />
     <Compile Include="Converter\ImageToBitmapImageConverter.cs" />
     <Compile Include="Exception\FileException.cs" />
@@ -124,9 +124,16 @@
     <Compile Include="ViewModel\DataGridViewModel.cs" />
     <Compile Include="ViewModel\ImageCommandViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MediaViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
     <Compile Include="ViewModel\Mp3SongViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\MediaView.xaml.cs">
+      <DependentUpon>MediaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\CheckedElementsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +163,14 @@
     <Page Include="View\MainWindowResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MediaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +224,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\mp3_tag_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\img_pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\img_play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\img_stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\img_eject.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

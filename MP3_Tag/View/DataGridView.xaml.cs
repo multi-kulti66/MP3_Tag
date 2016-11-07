@@ -8,7 +8,12 @@
 
 namespace MP3_Tag.View
 {
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Linq;
     using System.Windows.Controls;
+    using System.Windows.Data;
+    using ViewModel;
 
 
 

@@ -184,12 +184,12 @@ namespace MP3_Tag.Helper
         {
             object dictionaryValue = this.propertyDictionary[paramObjectKey];
 
-            if (dictionaryValue != paramObjectValue)
+            if (Equals(dictionaryValue, paramObjectValue))
             {
-                return true;
+                return false;
             }
 
-            return false;
+            return true;
         }
 
         private bool IteratePropertiesAndGetResult(Func<string, object, bool> paramFunc)

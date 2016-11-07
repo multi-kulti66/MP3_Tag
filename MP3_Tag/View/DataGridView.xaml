@@ -4,46 +4,44 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:behavior="clr-namespace:MP3_Tag.Behavior"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:viewModel="clr-namespace:MP3_Tag.ViewModel" mc:Ignorable="d" d:DesignHeight="300"
-             d:DesignWidth="300">
+             xmlns:viewModel="clr-namespace:MP3_Tag.ViewModel"
+             mc:Ignorable="d" d:DesignHeight="300"
+             d:DesignWidth="500">
     <UserControl.Resources>
         <ResourceDictionary Source="MainWindowResources.xaml" />
     </UserControl.Resources>
 
-    <Grid>
+    <Grid d:DataContext="{d:DesignInstance viewModel:DataGridViewModel}">
         <Border Style="{StaticResource MainBorderStyle}">
-            <HeaderedContentControl Header="Liste" Style="{StaticResource MainHeaderStyle}">
-                <DataGrid x:Name="Mp3DataGrid" ItemsSource="{Binding Path=Mp3SongViewModels}"
-                          AutoGenerateColumns="False" RowStyle="{StaticResource RowDataGridStyle}"
-                          SelectionMode="Single" CanUserDeleteRows="False" AllowDrop="True"
-                          SelectedItem="{Binding Path=SelectedMp3SongViewModel}"
-                          behavior:DropBehavior.DropCommand="{Binding Path=DropCommand}"
-                          behavior:RowMoveBehavior.EnableRowsMove="True">
+            <HeaderedContentControl Header="List" Style="{StaticResource MainHeaderStyle}">
+                <DataGrid ItemsSource="{Binding Path=Mp3SongViewModels}" AutoGenerateColumns="False"
+                          RowStyle="{StaticResource RowDataGridStyle}" CanUserDeleteRows="False" CanUserReorderColumns="False"
+                          CanUserSortColumns="False" AllowDrop="True"
+                          behavior:DropBehavior.DropCommand="{Binding Path=DropCommand}">
+                    <i:Interaction.Behaviors>
+                        <behavior:SelectedItemsBehavior SelectedItems="{Binding Path=SelectedMp3SongViewModels}" />
+                    </i:Interaction.Behaviors>
                     <DataGrid.InputBindings>
-                        <KeyBinding Modifiers="Control" Key="S"
-                                    Command="{Binding Path=SelectedMp3SongViewModel.SaveCommand}" />
-                        <KeyBinding Modifiers="Ctrl" Key="Z"
-                                    Command="{Binding Path=SelectedMp3SongViewModel.UndoChangesCommand}" />
-                        <KeyBinding Key="Delete" Command="{Binding Path=SelectedMp3SongViewModel.RemoveCommand}" />
+                        <KeyBinding Key="Space" Command="{Binding Path=CheckOrUncheckSelectedElementsCommand}" />
+                        <KeyBinding Key="OemPlus" Command="{Binding Path=MoveUpSelectedElementsCommand}" />
+                        <KeyBinding Key="OemMinus" Command="{Binding Path=MoveDownSelectedElementsCommand}" />
                     </DataGrid.InputBindings>
                     <DataGrid.Columns>
                         <DataGridTemplateColumn CellStyle="{StaticResource NonTabCellDataGridStyle}">
                             <DataGridTemplateColumn.HeaderTemplate>
                                 <DataTemplate>
                                     <!-- Mode=OneWay, um ConvertBack nicht zu triggern -->
-                                    <CheckBox
-                                        IsChecked="{Binding Path=DataContext.Mp3SongViewModels, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay, Converter={StaticResource Mp3CollectionToBooleanConverter}}">
+                                    <CheckBox IsChecked="{Binding Path=DataContext.Mp3SongViewModels, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay, Converter={StaticResource Mp3CollectionToBooleanConverter}}">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Checked">
                                                 <i:InvokeCommandAction
-                                                    Command="{Binding DataContext.SelectAllMp3SongsCommand,
-                RelativeSource={RelativeSource AncestorType={x:Type controls:MetroWindow}}}" />
+                                                    Command="{Binding DataContext.CheckAllMp3SongViewModelsCommand,
+                RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
                                             </i:EventTrigger>
                                             <i:EventTrigger EventName="Unchecked">
                                                 <i:InvokeCommandAction
-                                                    Command="{Binding DataContext.DeselectAllMp3SongsCommand,
-                RelativeSource={RelativeSource AncestorType={x:Type controls:MetroWindow}}}" />
+                                                    Command="{Binding DataContext.UncheckAllMp3SongViewModelsCommand,
+                RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                     </CheckBox>
@@ -60,7 +58,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Veränderung" Width="Auto" IsReadOnly="True"
+                        <DataGridTemplateColumn Header="Change" Width="Auto" IsReadOnly="True"
                                                 CellStyle="{StaticResource NonTabCellDataGridStyle}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate DataType="{x:Type viewModel:Mp3SongViewModel}">
@@ -83,16 +81,16 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Interpret"
+                        <DataGridTextColumn Header="Artist"
                                             Binding="{Binding Path=Artist, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                                             CellStyle="{StaticResource TabCellDataGridStyle}" />
-                        <DataGridTextColumn Header="Titel"
+                        <DataGridTextColumn Header="Title"
                                             Binding="{Binding Path=Title, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                                             CellStyle="{StaticResource TabCellDataGridStyle}" />
                         <DataGridTextColumn Header="Album"
                                             Binding="{Binding Path=Album, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                                             CellStyle="{StaticResource TabCellDataGridStyle}" />
-                        <DataGridTextColumn Header="Pfad" Binding="{Binding Path=FilePath, Mode=OneWay}"
+                        <DataGridTextColumn Header="Path" Binding="{Binding Path=FilePath, Mode=OneWay}"
                                             CellStyle="{StaticResource NonTabCellDataGridStyle}" />
                     </DataGrid.Columns>
                 </DataGrid>

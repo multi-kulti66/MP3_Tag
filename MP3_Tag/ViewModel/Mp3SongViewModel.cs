@@ -1,6 +1,6 @@
 ﻿// ///////////////////////////////////
 // File: Mp3SongViewModel.cs
-// Last Change: 03.11.2016  20:50
+// Last Change: 07.11.2016  23:14
 // Author: Andre Multerer
 // ///////////////////////////////////
 
@@ -12,6 +12,7 @@ namespace MP3_Tag.ViewModel
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+    using System.IO;
     using System.Linq;
     using System.Reflection;
     using GalaSoft.MvvmLight.Command;
@@ -72,7 +73,7 @@ namespace MP3_Tag.ViewModel
 
         [DisplayName]
         [Required]
-        [ValidString()]
+        [ValidString]
         public string Title
         {
             get { return this.mp3Song.Title; }
@@ -86,7 +87,7 @@ namespace MP3_Tag.ViewModel
 
         [DisplayName]
         [Required]
-        [ValidString()]
+        [ValidString]
         public string Artist
         {
             get { return this.mp3Song.Artist; }
@@ -99,7 +100,7 @@ namespace MP3_Tag.ViewModel
         }
 
         [DisplayName]
-        [ValidString()]
+        [ValidString]
         public string Album
         {
             get { return this.mp3Song.Album; }
@@ -122,10 +123,11 @@ namespace MP3_Tag.ViewModel
         private void InitCommands()
         {
             this.Commands = new List<CommandViewModel>();
+            this.Commands.Add(new CommandViewModel(Resources.Mp3SongVM_DisplayName_Load, Resources.CommandName_Load, new RelayCommand(this.PlayMessage)));
             this.Commands.Add(new CommandViewModel(Resources.Mp3SongVM_DisplayName_Save, Resources.CommandName_Save, new RelayCommand(this.Save, this.CanSave)));
             this.Commands.Add(new CommandViewModel(Resources.Mp3SongVM_DisplayName_Undo, Resources.CommandName_Undo, new RelayCommand(this.Undo, this.CanUndo)));
             this.Commands.Add(new CommandViewModel(Resources.Mp3SongVM_DisplayName_Remove, Resources.CommandName_Remove, new RelayCommand(this.RemoveMessage)));
-            this.Commands.Add(new CommandViewModel(Resources.Mp3SongVM_DisplayName_ClearAlbum, Resources.CommandName_ClearAlbum, new RelayCommand(this.ClearAlbum)));
+            this.Commands.Add(new CommandViewModel(Resources.Mp3SongVM_DisplayName_ClearAlbum, Resources.CommandName_ClearAlbum, new RelayCommand(this.ClearAlbum, this.CanClearAlbum)));
         }
 
         public RelayCommand GetCommand(string paramCommandName)
@@ -143,9 +145,25 @@ namespace MP3_Tag.ViewModel
 
         public void Rename(IMp3Tag paramMp3Tag)
         {
-            this.Title = paramMp3Tag.Title;
-            this.Artist = paramMp3Tag.Artist;
-            this.Album = paramMp3Tag.Album;
+            if (!string.IsNullOrEmpty(paramMp3Tag.Title))
+            {
+                this.Title = paramMp3Tag.Title;
+            }
+
+            if (!string.IsNullOrEmpty(paramMp3Tag.Artist))
+            {
+                this.Artist = paramMp3Tag.Artist;
+            }
+
+            if (!string.IsNullOrEmpty(paramMp3Tag.Album))
+            {
+                this.Album = paramMp3Tag.Album;
+            }
+        }
+
+        private void PlayMessage()
+        {
+            Messenger.Default.Send(new NotificationMessage<Mp3SongViewModel>(this, Resources.CommandName_Load));
         }
 
         private bool CanSave()
@@ -160,18 +178,25 @@ namespace MP3_Tag.ViewModel
 
         private async void Save()
         {
-            if (this.mp3Song.FileExistsAlready)
+            try
             {
-                bool replaceFile = await this.dialogService.ShowDialogYesNo("Warning!", "The file exists already. Do you want to replace it?");
-
-                if (!replaceFile)
+                if (this.mp3Song.FileExistsAlready)
                 {
-                    return;
-                }
-            }
+                    bool replaceFile = await this.dialogService.ShowDialogYesNo("Warning!", "The file exists already. Do you want to replace it?");
 
-            this.mp3Song.SaveAndRename();
-            this.UpdateProperties();
+                    if (!replaceFile)
+                    {
+                        return;
+                    }
+                }
+
+                this.mp3Song.SaveAndRename();
+                this.UpdateProperties();
+            }
+            catch (IOException)
+            {
+                this.dialogService.ShowMessage("Warning!", string.Format("The following file is loaded in the media player and can't be saved:\n {0}", this.Artist + " - " + this.Title));
+            }
         }
 
         private bool CanUndo()
@@ -219,6 +244,16 @@ namespace MP3_Tag.ViewModel
             }
 
             Messenger.Default.Send(new NotificationMessage<Mp3SongViewModel>(this, Resources.CommandName_Remove));
+        }
+
+        private bool CanClearAlbum()
+        {
+            if (string.IsNullOrEmpty(this.Album))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private void ClearAlbum()
