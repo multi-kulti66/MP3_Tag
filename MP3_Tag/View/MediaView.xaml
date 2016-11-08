@@ -8,7 +8,7 @@
         <StackPanel Background="Black" d:DataContext="{d:DesignInstance viewModel:MediaViewModel}">
             <!-- To interactively stop, pause, and play the media, the LoadedBehavior 
            property of the MediaElement must be set to "Manual". -->
-            <MediaElement Name="myMediaElement" Source="{Binding Path=FilePath}" Width="450" Height="1"
+            <MediaElement Name="myMediaElement" Source="{Binding Path=FileName}" Width="450" Height="1"
                           LoadedBehavior="Manual" UnloadedBehavior="Stop" Stretch="Fill"
                           MediaOpened="Element_MediaOpened" MediaEnded="Element_MediaEnded" />
 

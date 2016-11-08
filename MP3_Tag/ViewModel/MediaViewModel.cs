@@ -46,7 +46,7 @@ namespace MP3_Tag.ViewModel
             {
                 this.SetProperty(newValue => this._selectedMp3SongViewModel = newValue, value);
                 this.RaisePropertyChanged(() => this.DisplayName);
-                this.RaisePropertyChanged(() => this.FilePath);
+                this.RaisePropertyChanged(() => this.FileName);
             }
         }
 
@@ -76,9 +76,17 @@ namespace MP3_Tag.ViewModel
             }
         }
 
-        public string FilePath
+        public string FileName
         {
-            get { return this._selectedMp3SongViewModel.FilePath; }
+            get
+            {
+                if (this._selectedMp3SongViewModel == null)
+                {
+                    return string.Empty;
+                }
+
+                return this._selectedMp3SongViewModel.FilePath;
+            }
         }
 
         #endregion
@@ -93,7 +101,7 @@ namespace MP3_Tag.ViewModel
             {
                 this.SelectedMp3SongViewModel = notificationMessage.Content;
             }
-            else if ((notificationMessage.Notification == Resources.CommandName_Remove) && (this._selectedMp3SongViewModel != null) && (notificationMessage.Content.FilePath == this.FilePath))
+            else if ((notificationMessage.Notification == Resources.CommandName_Remove) && (this._selectedMp3SongViewModel != null) && (notificationMessage.Content.FilePath == this.FileName))
             {
                 this.SelectedMp3SongViewModel = null;
             }
